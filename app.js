@@ -1,6 +1,6 @@
 /*
 
-GEREKLİ PAKETLER YÜKLENİYOR...
+REQUIRED PACKAGES ARE BEING LOADED...
 
 */
 var http = require('http');
@@ -8,18 +8,19 @@ var express = require('express');
 
 var app = express();
 
-app.set('port', process.env.PORT || 3005); // GİRİŞ PORTU AYARLANDI
-app.set('views', __dirname + '/app/server/views'); // VIEW KLASÖRÜ TANITILDI
-app.set('view engine', 'ejs'); // VIEW ENGINE AYARLANDI
-app.use(express.static(__dirname + '/app/public')); // KULLANICILAR TARAFINDAN ERİŞİLEBİLEN KLASÖR TANIMLANDI
+app.set('port', process.env.PORT || 3005); // ENTRY PORT SET
+app.set('views', __dirname + '/app/server/views'); // VIEWS DIRECTORY DEFINED
+app.set('view engine', 'ejs'); // VIEW ENGINE CONFIGURED
+app.use(express.static(__dirname + '/app/public')); // PUBLICLY ACCESSIBLE DIRECTORY SET
 
-require('./app/routes')(app); // ROUTE DOSYASI ÇAĞIRILDI
+require('./app/routes')(app); // ROUTE FILE LOADED
 
 /*
 
-HTTP SERVER OLUŞTURULDU
+HTTP SERVER CREATED
 
 */
 http.createServer(app).listen(app.get('port'), function(){
-	console.log('Sistem ' + app.get('port') + ' Portu Üzerinde Çalışıyor.');
+	console.log('System is running on port ' + app.get('port') + '.');
 });
+
